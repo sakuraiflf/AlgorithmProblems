@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -42,7 +43,10 @@ int query(int pos)
 int main()
 {
 	FILE *fp = NULL;
+	FILE *op = NULL;
 	fp = fopen("data.txt", "r");
+	op = fopen("out.txt", "w+");
+
 	if (fp == NULL)
 	{
 		printf("data.txt file could not be found\n");
@@ -69,8 +73,8 @@ int main()
 		int temp = query(b[i]);
 		nxs += b[i] - temp;
 	}
-	cout << nxs << endl;
 
-	getchar();
+	fprintf(op, "%lld", nxs);
+
 	return 0;
 }
